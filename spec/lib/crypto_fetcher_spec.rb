@@ -27,12 +27,38 @@ RSpec.describe CryptoFetcher do
     it 'fetches the crypto data for specific params' do
       expect(Net::HTTP).to receive(:get).with(expected_endpoint).and_return(expected_result)
 
-      params = ['circulating_supply', 'max_supply', 'name', 'symbol', 'price']
       tickers = ['ETH', 'BTC']
 
-      result = CryptoFetcher.new(tickers, params).fetch
+      result = CryptoFetcher.new(tickers: tickers).fetch
 
       expect(result.length).to eq(2)
     end
+  end
+
+  context 'with params specified' do
+    context 'with tickers specified' do
+
+    let(:expected_result) do
+      [
+        {
+          "id": "BTC",
+          "name": "test name",
+          "symbol": "test symbol"
+        }
+      ].to_json
+    end
+
+    let(:expected_endpoint) { URI('https://api.nomics.com/v1/currencies/ticker?key=f9e3af809fe67df307029ac6e24c52815b144ac4&ids=[ETH,BTC]')}
+
+    it 'fetches the crypto data for specific params' do
+      expect(Net::HTTP).to receive(:get).with(expected_endpoint).and_return(expected_result)
+
+      params = ['name', 'symbol']
+
+      result = CryptoFetcher.new(params: params).fetch
+
+      expect(result.length).to eq(2)
+    end
+  end
   end
 end

@@ -4,9 +4,5 @@
 require_relative '../lib/crypto_fetcher'
 require 'pry-nav'
 require 'json'
-require 'dotenv'
 
-Dotenv.load('../.env')
-
-# CryptoFetcher.new.fetch(*ARGV)
 puts CryptoFetcher.new.fetch

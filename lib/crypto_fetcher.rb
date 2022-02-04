@@ -5,11 +5,11 @@ require 'json'
 class CryptoFetcher
 
   # Move to a .env file
-  API_ENDPOINT = 'https://api.nomics.com/v1/currencies/ticker'
-  API_KEY = 'f9e3af809fe67df307029ac6e24c52815b144ac4'
+  API_KEY = ENV['API_KEY']
+  API_ENDPOINT = ENV["API_URL"]
   DEFAULT_IDS = ['BTC','ETH','XRP']
 
-  def initialize(tickers=nil, params=nil)
+  def initialize(tickers: nil, params: nil)
     @formatted_tickers = format_tickers(tickers || DEFAULT_IDS)
     @params = params
   end
@@ -26,7 +26,6 @@ class CryptoFetcher
   def format_tickers(ids)
     "[#{ids.join(',')}]"
   end
-
 end
 
 
