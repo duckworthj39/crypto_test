@@ -16,7 +16,6 @@ class CryptoFetcher
 
   def fetch
     endpoint = URI("#{API_ENDPOINT}?key=#{API_KEY}&ids=#{formatted_tickers}")
-    binding.pry
     JSON.parse(Net::HTTP.get(endpoint))
   end
 
