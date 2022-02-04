@@ -13,3 +13,8 @@ The api key for this endpoint is not in the repo
 
 # Run the app
 ./bin/run.rb
+
+# More info
+I managed to add the ability to filter by ticker, you can see I started moving onto filtering the returned attributes however due to time constraints that test is still failing.
+
+My specs show more of my thought process around this.
