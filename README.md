@@ -2,7 +2,8 @@
 
 The aim of this is to fetch crypto currency info from https://api.nomics.com/v1/
 
-The api key for this endpoint is not in the repo
+This is just a POC with some code I threw together.
+
 
 # Prerequisites
 * Install ruby 2.7.3
